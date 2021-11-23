@@ -21,8 +21,6 @@ const container = document.getElementById("icons");
 const popolate = (array) => array.forEach(icon => container.innerHTML += card(icon));
 // prima popolazione array
 popolate(icons);
-// popolazione select
-popolateOptions();
 // divisione array per tipo
 const animal = [], vegetable = [], user = [];
 icons.forEach(icon => icon.type == "animal" ? animal.push(icon) : icon.type == "vegetable" ? vegetable.push(icon) : user.push(icon));
@@ -89,3 +87,4 @@ function popolateOptions() {
 		}
 	});
 }
+popolateOptions();
