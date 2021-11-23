@@ -17,10 +17,12 @@ const icons = [
 	{name: 'user-secret', prefix: 'fa-', type: 'user', family: 'fas', color: color()}
 ];
 const container = document.getElementById("icons");
-// dichiarazione funzione per popolare container per tipo
+// funzione per popolare container per tipo
 const popolate = (array) => array.forEach(icon => container.innerHTML += card(icon));
 // prima popolazione array
 popolate(icons);
+// popolazione select
+popolateOptions();
 // divisione array per tipo
 const animal = [], vegetable = [], user = [];
 icons.forEach(icon => icon.type == "animal" ? animal.push(icon) : icon.type == "vegetable" ? vegetable.push(icon) : user.push(icon));
@@ -57,4 +59,33 @@ function color() {
 		color += chars[num];
 	}
 	return color;
+}
+// funzione per creare un option
+function option(icon) {
+	const {type} = icon;
+	let name = "";
+	switch (type) {
+		case "animal":
+			name = "Animali";
+			break;
+		case "vegetable":
+			name = "Vegetali";
+			break;
+		case "user":
+			name = "Utenti";
+	}
+	return `
+	<option value="${type}">${name}</option>
+	`;
+}
+// funzione per popolare il select
+function popolateOptions() {
+	let item = icons[0].type;
+	filter.innerHTML += option(icons[0]);
+	icons.forEach(icon => {
+		if (icon.type != item) {
+			filter.innerHTML += option(icon);
+			item = icon.type;
+		}
+	});
 }
