@@ -35,6 +35,9 @@ main {
     color: white;
     padding: 20px 10px;
 }
+#main-header select {
+    text-transform: capitalize;
+}
 #icons {
     padding: 20px 0;
     display: grid;
