@@ -17,15 +17,25 @@ const icons = [
 	{name: 'user-secret', prefix: 'fa-', type: 'user', family: 'fas', color: 'blue'}
 ];
 const container = document.getElementById("icons");
-// ciclo forEach per popolare il container con tutte le icone
-icons.forEach(icon => container.innerHTML += card(icon));
+// dichiarazione funzione per popolare container per tipo
+const popolate = (array) => array.forEach(icon => container.innerHTML += card(icon));
+// prima popolazione array
+popolate(icons);
 // divisione array per tipo
 const animal = [], vegetable = [], user = [];
 icons.forEach(icon => icon.type == "animal" ? animal.push(icon) : icon.type == "vegetable" ? vegetable.push(icon) : user.push(icon));
-
+// funzione per selezionare il filtro nel select
+const filter = document.getElementById("icons-filter");
+filter.addEventListener("change", function () {
+	container.innerHTML = "";
+	const value = this.value;
+	let choose = null;
+	value == "animal" ? choose = animal : value == "vegetable" ? choose = vegetable : value == "user" ? choose = user : choose = icons;
+	popolate(choose);
+});
 // funzione per creare una card
 function card(icon) {
-	const {name, prefix, type, family, color} = icon;
+	const {name, prefix, family, color} = icon;
 	const iconElement = `${family} ${prefix}${name}`;
 	return `
 	<div class="card flex-center">
