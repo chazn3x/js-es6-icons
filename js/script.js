@@ -31,7 +31,15 @@ const icons = [
 	{name: 'bus', prefix: 'fa-', type: 'automotive', family: 'fas'},
 	{name: 'ambulance', prefix: 'fa-', type: 'automotive', family: 'fas'},
 	{name: 'car-side', prefix: 'fa-', type: 'automotive', family: 'fas'},
-	{name: 'truck', prefix: 'fa-', type: 'automotive', family: 'fas'}
+	{name: 'truck', prefix: 'fa-', type: 'automotive', family: 'fas'},
+	{name: 'globe-europe', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'caravan', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'map', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'plane', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'umbrella-beach', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'monument', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'suitcase', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'spa', prefix: 'fa-', type: 'travel', family: 'fas'}
 ];
 
 // varibili
@@ -40,6 +48,8 @@ const select = document.getElementById("icons-filter");
 // array contenente oggetti di tipi diversi
 const arrayOfObjects = [];
 
+// ordinamento tipi in ordine alfabetico
+reorderTypes();
 // creazione oggetti di tipo diverso dinamicamente e inserimento in array
 createArrayObject();
 // colori random per tipo
@@ -127,6 +137,7 @@ function createArrayObject() {
 			arrayOfObjects[id].array.push(icons[i]) // inserimento icona nell'array precedentemente creato
 		}
 	});
+	reorderIcons();
 }
 // funzione per creare un oggetto con id, tipo e array dinamici
 function createObject(num, typeName) {
@@ -151,5 +162,33 @@ function clickCards() {
 			}
 		})
 		
+	}
+}
+// funzione per ordinare i tipi in ordine alfabetico
+function reorderTypes() {
+	function reorder(a, b) {
+		if (a.type < b.type) {return -1;}
+		if (a.type > b.type) {return 1;}
+	}
+	icons.sort(reorder);
+}
+// funzione per ordinare le icone per tipo in ordine alfabetico
+function reorderIcons() {
+	function reorderFirst(a, b) {
+		if (a.type == b.type) {
+			if (a.name < b.name) {return -1;}
+			if (a.name > b.name) {return 1;}
+		}
+		if (a.type < b.type) {
+			reorderOthers;
+		}
+	}
+	function reorderOthers(a, b) {
+		if (a.name < b.name) {return -1;}
+		if (a.name > b.name) {return 1;}
+	}
+	arrayOfObjects[0].array.sort(reorderFirst);
+	for (let i = 1; i < arrayOfObjects.length; i++) {
+		arrayOfObjects[i].array.sort(reorderOthers);
 	}
 }
