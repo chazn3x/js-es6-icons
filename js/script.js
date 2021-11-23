@@ -17,7 +17,7 @@ const icons = [
 	{name: 'user-secret', prefix: 'fa-', type: 'user', family: 'fas', color: 'blue'}
 ];
 const container = document.getElementById("icons");
-// ciclo forEach per popolare il container
+// ciclo forEach per popolare il container con tutte le icone
 icons.forEach(icon => container.innerHTML += card(icon));
 // funzione per creare una card
 function card(icon) {
@@ -26,7 +26,7 @@ function card(icon) {
 	return `
 	<div class="card flex-center">
 		<div class="card-content">
-			<div class="icon">
+			<div class="icon ${color}">
 				<i class="${iconElement}"></i>
 			</div>
 			<div class="name">${name}</div>

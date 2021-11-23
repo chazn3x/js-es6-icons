@@ -54,3 +54,12 @@ main {
 .card.active {
     background: #aaa;
 }
+.orange {
+    color: orange;
+}
+.green {
+    color: green;
+}
+.blue {
+    color: blue;
+}
