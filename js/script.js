@@ -1,4 +1,4 @@
-const animals = [
+const icons = [
 	{name: 'cat', prefix: 'fa-', type: 'animal', family: 'fas', color: 'orange'},
 	{name: 'crow', prefix: 'fa-', type: 'animal', family: 'fas', color: 'orange'},
 	{name: 'dog', prefix: 'fa-', type: 'animal', family: 'fas', color: 'orange'},
