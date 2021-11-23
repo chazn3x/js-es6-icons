@@ -1,16 +1,16 @@
 const icons = [
-	{name: 'cat', prefix: 'fa-', type: 'animal', family: 'fas'},
-	{name: 'crow', prefix: 'fa-', type: 'animal', family: 'fas'},
-	{name: 'dog', prefix: 'fa-', type: 'animal', family: 'fas'},
-	{name: 'dove', prefix: 'fa-', type: 'animal', family: 'fas'},
-	{name: 'dragon', prefix: 'fa-', type: 'animal', family: 'fas'},
-	{name: 'horse', prefix: 'fa-', type: 'animal', family: 'fas'},
-	{name: 'hippo', prefix: 'fa-', type: 'animal', family: 'fas'},
-	{name: 'fish', prefix: 'fa-', type: 'animal', family: 'fas'},
-	{name: 'carrot', prefix: 'fa-', type: 'vegetable', family: 'fas'},
-	{name: 'apple-alt', prefix: 'fa-', type: 'vegetable', family: 'fas'},
-	{name: 'lemon', prefix: 'fa-', type: 'vegetable', family: 'fas'},
-	{name: 'pepper-hot', prefix: 'fa-', type: 'vegetable', family: 'fas'},
+	{name: 'cat', prefix: 'fa-', type: 'animals', family: 'fas'},
+	{name: 'crow', prefix: 'fa-', type: 'animals', family: 'fas'},
+	{name: 'dog', prefix: 'fa-', type: 'animals', family: 'fas'},
+	{name: 'dove', prefix: 'fa-', type: 'animals', family: 'fas'},
+	{name: 'dragon', prefix: 'fa-', type: 'animals', family: 'fas'},
+	{name: 'horse', prefix: 'fa-', type: 'animals', family: 'fas'},
+	{name: 'hippo', prefix: 'fa-', type: 'animals', family: 'fas'},
+	{name: 'fish', prefix: 'fa-', type: 'animals', family: 'fas'},
+	{name: 'carrot', prefix: 'fa-', type: 'food', family: 'fas'},
+	{name: 'apple-alt', prefix: 'fa-', type: 'food', family: 'fas'},
+	{name: 'lemon', prefix: 'fa-', type: 'food', family: 'fas'},
+	{name: 'pepper-hot', prefix: 'fa-', type: 'food', family: 'fas'},
 	{name: 'user-astronaut', prefix: 'fa-', type: 'user', family: 'fas'},
 	{name: 'user-graduate', prefix: 'fa-', type: 'user', family: 'fas'},
 	{name: 'user-ninja', prefix: 'fa-', type: 'user', family: 'fas'},
@@ -39,7 +39,19 @@ const icons = [
 	{name: 'umbrella-beach', prefix: 'fa-', type: 'travel', family: 'fas'},
 	{name: 'monument', prefix: 'fa-', type: 'travel', family: 'fas'},
 	{name: 'suitcase', prefix: 'fa-', type: 'travel', family: 'fas'},
-	{name: 'spa', prefix: 'fa-', type: 'travel', family: 'fas'}
+	{name: 'spa', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'playstation', prefix: 'fa-', type: 'brands', family: 'fab'},
+	{name: 'city', prefix: 'fa-', type: 'buildings', family: 'fas'},
+	{name: 'home', prefix: 'fa-', type: 'buildings', family: 'fas'},
+	{name: 'kaaba', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'landmark', prefix: 'fa-', type: 'travel', family: 'fas'},
+	{name: 'compact-disc', prefix: 'fa-', type: 'music', family: 'fas'},
+	{name: 'headphones', prefix: 'fa-', type: 'music', family: 'fas'},
+	{name: 'play', prefix: 'fa-', type: 'music', family: 'fas'},
+	{name: 'soundcloud', prefix: 'fa-', type: 'brands', family: 'fab'},
+	{name: 'volume-up', prefix: 'fa-', type: 'music', family: 'fas'},
+	{name: 'hospital', prefix: 'fa-', type: 'buildings', family: 'fas'},
+	{name: 'hotel', prefix: 'fa-', type: 'buildings', family: 'fas'}
 ];
 
 // varibili
@@ -174,21 +186,13 @@ function reorderTypes() {
 }
 // funzione per ordinare le icone per tipo in ordine alfabetico
 function reorderIcons() {
-	function reorderFirst(a, b) {
+	function reorder(a, b) {
 		if (a.type == b.type) {
 			if (a.name < b.name) {return -1;}
 			if (a.name > b.name) {return 1;}
 		}
-		if (a.type < b.type) {
-			reorderOthers;
-		}
 	}
-	function reorderOthers(a, b) {
-		if (a.name < b.name) {return -1;}
-		if (a.name > b.name) {return 1;}
-	}
-	arrayOfObjects[0].array.sort(reorderFirst);
-	for (let i = 1; i < arrayOfObjects.length; i++) {
-		arrayOfObjects[i].array.sort(reorderOthers);
+	for (let i = 0; i < arrayOfObjects.length; i++) {
+		arrayOfObjects[i].array.sort(reorder);
 	}
 }

@@ -18,14 +18,20 @@ i {
     font-size: 2.5em;
 }
 
+/* body */
+body {
+    height: 100vh;
+}
 /* header */
 header {
     width: 100%;
     padding: 20px 0;
+    height: 80px;
 }
 /* main */
 main {
     background: #ddd;
+    min-height: calc(100% - 80px);
 }
 #main-header {
     background: #0bf;
@@ -57,12 +63,3 @@ main {
 .card.active {
     background: #aaa;
 }
-/* .orange {
-    color: orange;
-}
-.green {
-    color: green;
-}
-.blue {
-    color: blue;
-} */
