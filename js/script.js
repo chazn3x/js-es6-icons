@@ -16,3 +16,21 @@ const icons = [
 	{name: 'user-ninja', prefix: 'fa-', type: 'user', family: 'fas', color: 'blue'},
 	{name: 'user-secret', prefix: 'fa-', type: 'user', family: 'fas', color: 'blue'}
 ];
+const container = document.getElementById("icons");
+// ciclo forEach per popolare il container
+icons.forEach(icon => container.innerHTML += card(icon));
+// funzione per creare una card
+function card(icon) {
+	const {name, prefix, type, family, color} = icon;
+	const iconElement = `${family} ${prefix}${name}`;
+	return `
+	<div class="card flex-center">
+		<div class="card-content">
+			<div class="icon">
+				<i class="${iconElement}"></i>
+			</div>
+			<div class="name">${name}</div>
+		</div>
+	</div>
+	`;
+}
