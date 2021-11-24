@@ -83,15 +83,13 @@ select.addEventListener("change", function () {
 // funzione per ordinare i tipi in ordine alfabetico
 function reorderTypes() {
 	function reorder(a, b) {
-		return a.type < b.type ? -1 : 1;
-	}
-	function reorderName(a, b) {
 		if (a.type == b.type) {
-			return a.name < b.name ? -1 : 1;
+			return a.name < b.name ? -1 : 1
+		} else {
+			return a.type < b.type ? -1 : 1
 		}
 	}
 	icons.sort(reorder);
-	icons.sort(reorderName);
 }
 // funzione per assegnare colori random per tipo
 function randomColorsToType() {
@@ -146,9 +144,7 @@ function popolateOptions() {
 }
 // funzione per creare un option dinamico
 function option(type) {
-	return `
-	<option value="${type}">${type}</option>
-	`;
+	return `<option value="${type}">${type}</option>`;
 }
 // funzione per cliccare le card
 function clickCards() {
