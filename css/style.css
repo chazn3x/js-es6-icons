@@ -59,11 +59,7 @@ main {
     text-align: center;
     cursor: pointer;
     text-transform: uppercase;
-    display: none;
 }
 .card.select {
     background: #aaa;
-}
-.card.active {
-    display: flex;
 }

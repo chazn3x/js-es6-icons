@@ -54,19 +54,19 @@ const icons = [
 	{name: 'hotel', prefix: 'fa-', type: 'buildings', family: 'fas'}
 ];
 
-// varibili ++++
+// variabili ++++
 
 const container = document.getElementById("icons");
 const select = document.getElementById("icons-filter");
 
 // codice da eseguire ++++
 
-// ordinamento tipi in ordine alfabetico
-reorderTypes();
+// ordinamento icone per tipo e nome in ordine alfabetico
+icons.sort(reorder);
 // colori random per tipo
 randomColorsToType();
 // popolazione container
-popolate();
+popolate(icons);
 // popolazione del select con le opzioni dinamiche
 popolateOptions();
 // click esclusivo sulle card
@@ -74,22 +74,23 @@ clickCards();
 // funzione per selezionare il filtro nel select
 select.addEventListener("change", function () {
 	const value = this.value;
-	const cards = document.querySelectorAll(".card");
-	cards.forEach(card => card.classList.contains(`${value}`) ? card.classList.add("active") : card.classList.remove("active"));
+	container.innerHTML = "";
+	if (value != "all") {
+		const choosenType = icons.filter(icon => icon.type == value);
+		popolate(choosenType);
+	} else popolate(icons);
+	clickCards();
 });
 
 // funzioni ++++
 
 // funzione per ordinare i tipi in ordine alfabetico
-function reorderTypes() {
-	function reorder(a, b) {
-		if (a.type == b.type) {
-			return a.name < b.name ? -1 : 1
-		} else {
-			return a.type < b.type ? -1 : 1
-		}
+function reorder(a, b) {
+	if (a.type == b.type) {
+		return a.name < b.name ? -1 : 1
+	} else {
+		return a.type < b.type ? -1 : 1
 	}
-	icons.sort(reorder);
 }
 // funzione per assegnare colori random per tipo
 function randomColorsToType() {
@@ -116,12 +117,12 @@ function color() {
 	return color;
 }
 // funzione per popolare container
-function popolate() {icons.forEach(icon => container.innerHTML += card(icon))}
+function popolate(array) {array.forEach(icon => container.innerHTML += card(icon))}
 // funzione per creare una card
 function card(icon) {
-	const {name, prefix, family, color, type} = icon;
+	const {name, prefix, family, color} = icon;
 	return `
-	<div class="card flex-center all ${type} active">
+	<div class="card flex-center">
 		<div class="card-content">
 			<div class="icon" style="color: ${color}">
 				<i class="${family} ${prefix}${name}"></i>
@@ -133,19 +134,12 @@ function card(icon) {
 }
 // funzione per popolare il select
 function popolateOptions() {
-	let type = icons[0].type; // variabile per il confronto fra i tipi delle icone in icons
-	select.innerHTML += option(type);
-	icons.forEach((icon, i) => { // controllo dei tipi di tutte le icone in icons
-		if (icon.type != type) { // se i tipi delle icone a confronto sono diversi
-			type = icons[i].type
-			select.innerHTML += option(type);
-		}
-	});
+	const typeArray = [];
+	icons.forEach(icon => {if (!typeArray.includes(icon.type)) typeArray.push(icon.type)});
+	typeArray.forEach(icon => select.innerHTML += option(icon));
 }
 // funzione per creare un option dinamico
-function option(type) {
-	return `<option value="${type}">${type}</option>`;
-}
+function option(type) {return `<option value="${type}">${type}</option>`}
 // funzione per cliccare le card
 function clickCards() {
 	const cards = document.querySelectorAll(".card");
